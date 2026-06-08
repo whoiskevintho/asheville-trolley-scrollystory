@@ -7,7 +7,7 @@ const config = {
         }
       },
     // leave commented to use Mapbox Standard Style
-    accessToken: 'VITE_MAPBOX_ACCESS_TOKEN',
+    accessToken: import.meta.env.VITE_MAPBOX_ACCESS_TOKEN,
     showMarkers: false,
     markerColor: '#3FB1CE',
     //projection: 'equirectangular',
