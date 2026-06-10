@@ -23,24 +23,6 @@ const alignments = {
 }
 
 function addStoryLayers(map) {
-  map.addSource('west-asheville-sulphur-springs', {
-    type: 'vector',
-    url: 'mapbox://whoiskevintho.327cyfexvofu',
-  })
-
-  map.addLayer({
-    id: 'west-asheville-sulphur-springs-line',
-    type: 'line',
-    source: 'west-asheville-sulphur-springs',
-    'source-layer': '66761dc51f25c9b0bceb',
-    paint: {
-      'line-color': '#ffb000',
-      'line-emissive-strength': 1,
-      'line-width': 3,
-      'line-opacity': 0,
-    },
-  })
-
   map.addSource('southsideavenue-1889', {
     type: 'vector',
     url: 'mapbox://whoiskevintho.9d983rxjkwml',
@@ -69,6 +51,150 @@ function addStoryLayers(map) {
     type: 'line',
     source: 'pattonavenue-1889',
     'source-layer': 'd5b424af5ef22f12f437',
+    paint: {
+      'line-color': '#ffb000',
+      'line-emissive-strength': 1,
+      'line-width': 3,
+      'line-opacity': 0,
+    },
+  })
+
+  map.addSource('charlottestreet-1889', {
+    type: 'vector',
+    url: 'mapbox://whoiskevintho.34i9oswobn1i',
+  })
+
+  map.addLayer({
+    id: 'charlottestreet-1889-line',
+    type: 'line',
+    source: 'charlottestreet-1889',
+    'source-layer': '42395e24869b98a48aed',
+    paint: {
+      'line-color': '#ffb000',
+      'line-emissive-strength': 1,
+      'line-width': 3,
+      'line-opacity': 0,
+    },
+  })
+
+  map.addSource('valleystreet-1889', {
+    type: 'vector',
+    url: 'mapbox://whoiskevintho.hmy7z73h1wy0',
+  })
+
+  map.addLayer({
+    id: 'valleystreet-1889-line',
+    type: 'line',
+    source: 'valleystreet-1889',
+    'source-layer': 'c9ee43b1d1931dd1176d',
+    paint: {
+      'line-color': '#ffb000',
+      'line-emissive-strength': 1,
+      'line-width': 3,
+      'line-opacity': 0,
+    },
+  })
+
+  map.addSource('EastStreetLine-1890', {
+    type: 'vector',
+    url: 'mapbox://whoiskevintho.nsvsz76w3tgs',
+  })
+
+  map.addLayer({
+    id: 'EastStreetLine-1890-line',
+    type: 'line',
+    source: 'EastStreetLine-1890',
+    'source-layer': 'bd9f6c9a632d53e4a59f',
+    paint: {
+      'line-color': '#ffb000',
+      'line-emissive-strength': 1,
+      'line-width': 3,
+      'line-opacity': 0,
+    },
+  })
+
+  map.addSource('montfordline-1891', {
+    type: 'vector',
+    url: 'mapbox://whoiskevintho.dop4caifk207',
+  })
+
+  map.addLayer({
+    id: 'montfordline-1891-line',
+    type: 'line',
+    source: 'montfordline-1891',
+    'source-layer': '34446b8ec6cbbcbdfdaf',
+    paint: {
+      'line-color': '#ffb000',
+      'line-emissive-strength': 1,
+      'line-width': 3,
+      'line-opacity': 0,
+    },
+  })
+
+  map.addSource('west-asheville-sulphur-springs', {
+    type: 'vector',
+    url: 'mapbox://whoiskevintho.327cyfexvofu',
+  })
+
+  map.addLayer({
+    id: 'west-asheville-sulphur-springs-line',
+    type: 'line',
+    source: 'west-asheville-sulphur-springs',
+    'source-layer': '66761dc51f25c9b0bceb',
+    paint: {
+      'line-color': '#ffb000',
+      'line-emissive-strength': 1,
+      'line-width': 3,
+      'line-opacity': 0,
+    },
+  })
+
+  map.addSource('frenchbroadavenue-1892', {
+    type: 'vector',
+    url: 'mapbox://whoiskevintho.v23dweld57od',
+  })
+
+  map.addLayer({
+    id: 'frenchbroadavenue-1892-line',
+    type: 'line',
+    source: 'frenchbroadavenue-1892',
+    'source-layer': '1f1119474448a087b968',
+    paint: {
+      'line-color': '#ffb000',
+      'line-emissive-strength': 1,
+      'line-width': 3,
+      'line-opacity': 0,
+    },
+  })
+
+  map.addSource('riversideparkextension', {
+    type: 'vector',
+    url: 'mapbox://whoiskevintho.pt63mp230t50',
+  })
+
+  map.addLayer({
+    id: 'riversideparkextension-line',
+    type: 'line',
+    source: 'riversideparkextension',
+    'source-layer': '1cf061a4263c4b92446a',
+    paint: {
+      'line-color': '#ffb000',
+      'line-emissive-strength': 1,
+      'line-width': 3,
+      'line-opacity': 0,
+    },
+  })
+
+  map.addSource('montfordavenuerealignment', {
+    type: 'vector',
+    url: 'mapbox://whoiskevintho.omnzlw6s30ih',
+  })
+
+  map.addLayer({
+    id: 'montfordavenuerealignment-line',
+    type: 'line',
+    source: 'montfordavenuerealignment',
+    'source-layer': '036df6e4bcef2ac553ce',
     paint: {
       'line-color': '#ffb000',
       'line-emissive-strength': 1,
@@ -271,6 +397,9 @@ export default function App() {
               key={chapter.id}
             >
               <div className={storyTheme}>
+                {chapter.openedYear && (
+                  <div className="chapter-year">{chapter.openedYear}</div>
+                )}
                 {chapter.title && <h3>{chapter.title}</h3>}
                 <BrokenImageSafe src={chapter.image} alt={chapter.title || ''} />
                 {chapter.description && (

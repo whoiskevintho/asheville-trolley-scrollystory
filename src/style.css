@@ -70,18 +70,18 @@ a:visited {
 }
 
 .centered {
-  width: 50vw;
+  width: min(42vw, 560px);
   margin: 0 auto;
 }
 
 .lefty {
-  width: 33vw;
+  width: min(28vw, 420px);
   margin-left: 2vw;
 }
 
 .righty {
-  width: 33vw;
-  margin-left: 62vw;
+  width: min(28vw, 420px);
+  margin-left: 70vw;
 }
 
 .fully {
@@ -107,17 +107,56 @@ a:visited {
 }
 
 .step.active {
-  opacity: 0.9;
+  opacity: 1;
 }
 
 .step > div {
-  padding: 25px 50px;
-  line-height: 25px;
-  font-size: 13px;
+  padding: 18px 24px;
+  border-radius: 12px;
+  color: #2f2618;
+  background-color: #e7d8ad;
+  box-shadow: 0 14px 32px rgb(0 0 0 / 28%);
+  font-family: Georgia, 'Times New Roman', serif;
+  font-size: 16px;
+  line-height: 1.6;
+}
+
+.step > div h3 {
+  margin-top: 0;
+  margin-bottom: 12px;
+  color: #1f1a10;
+  font-family: Georgia, 'Times New Roman', serif;
+  font-size: 28px;
+  line-height: 1.2;
+}
+
+.chapter-year {
+  display: inline-flex;
+  width: fit-content;
+  min-width: 76px;
+  height: 36px;
+  margin-bottom: 16px;
+  padding: 0 14px;
+  align-items: center;
+  justify-content: center;
+  border-radius: 8px;
+  color: #2f2618;
+  background-color: #c7a56b;
+  font-family: Georgia, 'Times New Roman', serif;
+  font-size: 18px;
+  font-weight: 700;
+  line-height: 1.1;
+  text-align: center;
+  white-space: nowrap;
+}
+
+.step > div p {
+  margin-bottom: 0;
 }
 
 .step img {
   width: 100%;
+  border-radius: 12px;
 }
 
 .mapboxgl-ctrl-globe-minimap {
