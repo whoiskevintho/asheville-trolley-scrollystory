@@ -202,6 +202,42 @@ function addStoryLayers(map) {
       'line-opacity': 0,
     },
   })
+
+  map.addSource('asheville-biltmore-street-railway', {
+    type: 'vector',
+    url: 'mapbox://whoiskevintho.s48e597erty2',
+  })
+
+  map.addLayer({
+    id: 'asheville-biltmore-street-railway-line',
+    type: 'line',
+    source: 'asheville-biltmore-street-railway',
+    'source-layer': '6b9b8b21086b61fbdc89',
+    paint: {
+      'line-color': '#ffb000',
+      'line-emissive-strength': 1,
+      'line-width': 3,
+      'line-opacity': 0,
+    },
+  })
+
+  map.addSource('charlotte-street-extension-1899', {
+    type: 'vector',
+    url: 'mapbox://whoiskevintho.lq34g3y3tmni',
+  })
+
+  map.addLayer({
+    id: 'charlotte-street-extension-1899-line',
+    type: 'line',
+    source: 'charlotte-street-extension-1899',
+    'source-layer': 'fc2d22599bfe2e5eb57d',
+    paint: {
+      'line-color': '#ffb000',
+      'line-emissive-strength': 1,
+      'line-width': 3,
+      'line-opacity': 0,
+    },
+  })
 }
 
 function addTerrain(map) {
@@ -376,9 +412,35 @@ export default function App() {
       <main id="story">
         {hasHeader && (
           <header id="header" className={storyTheme}>
-            {config.title && <h1>{config.title}</h1>}
-            {config.subtitle && <h2>{config.subtitle}</h2>}
-            {config.byline && <p>{config.byline}</p>}
+            <div className="header-image-wrap">
+              <img
+                className="header-image"
+                src="/banner-image.webp"
+                alt="Asheville trolley network"
+              />
+              {config.photoCredit && (
+                <p className="photo-credit">{config.photoCredit}</p>
+              )}
+            </div>
+            <div className="header-content">
+              {config.title && <h1>{config.title}</h1>}
+              {config.byline && (
+                <p className="byline">
+                  By{' '}
+                  <a href="https://whoiskevintho.com/about" target="_blank" rel="noreferrer">
+                    Kevin Young
+                  </a>
+                </p>
+              )}
+              {config.intro?.length > 0 && (
+                <div className="header-intro">
+                  {config.intro.map((paragraph) => (
+                    <p key={paragraph}>{paragraph}</p>
+                  ))}
+                </div>
+              )}
+              {config.subtitle && <h2>{config.subtitle}</h2>}
+            </div>
           </header>
         )}
 
@@ -404,6 +466,14 @@ export default function App() {
                 <BrokenImageSafe src={chapter.image} alt={chapter.title || ''} />
                 {chapter.description && (
                   <p dangerouslySetInnerHTML={{ __html: chapter.description }} />
+                )}
+                {chapter.owner && (
+                  <div
+                    className="chapter-owner"
+                    style={{ '--owner-color': chapter.ownerColor }}
+                  >
+                    {chapter.owner}
+                  </div>
                 )}
               </div>
             </article>
