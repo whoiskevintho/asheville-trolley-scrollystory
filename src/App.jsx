@@ -23,16 +23,33 @@ const alignments = {
 }
 
 function addStoryLayers(map) {
-  map.addSource('southsideavenue-1889', {
-    type: 'vector',
-    url: 'mapbox://whoiskevintho.9d983rxjkwml',
+  // map.addSource('southsideavenue-1889', {
+  //   type: 'vector',
+  //   url: 'mapbox://whoiskevintho.9d983rxjkwml',
+  // })
+
+  // map.addLayer({
+  //   id: 'southsideavenue-1889-line',
+  //   type: 'line',
+  //   source: 'southsideavenue-1889',
+  //   'source-layer': 'b7bd583b55a628a62f48',
+  //   paint: {
+  //     'line-color': '#ffb000',
+  //     'line-emissive-strength': 1,
+  //     'line-width': 3,
+  //     'line-opacity': 0,
+  //   },
+  // })
+
+    map.addSource('southsideavenue-1889', {
+      type: 'geojson',
+      data: '/geojson/SouthSideAvenue_1889.geojson',
   })
 
   map.addLayer({
     id: 'southsideavenue-1889-line',
     type: 'line',
     source: 'southsideavenue-1889',
-    'source-layer': 'fae7a171713a36282483',
     paint: {
       'line-color': '#ffb000',
       'line-emissive-strength': 1,

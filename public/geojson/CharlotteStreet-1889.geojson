@@ -1,0 +1,19 @@
+{
+"type": "FeatureCollection",
+"name": "CharlotteStreet-1889",
+"crs": { "type": "name", "properties": { "name": "urn:ogc:def:crs:OGC:1.3:CRS84" } },
+"features": [
+{ "type": "Feature", "properties": { "id": null }, "geometry": { "type": "MultiLineString", "coordinates": [ [ [ -82.546752304967455, 35.602977467869046 ], [ -82.546784487684818, 35.602384324382001 ], [ -82.546828375206772, 35.601664117396666 ], [ -82.546857064595088, 35.601315747240477 ], [ -82.546880603052401, 35.600728821187232 ], [ -82.546919833814513, 35.600256725368553 ], [ -82.546935526119356, 35.599937740130727 ], [ -82.546927679966927, 35.599484778908433 ], [ -82.547751525971506, 35.599280626533528 ], [ -82.548253679726699, 35.599146651254465 ], [ -82.548004222017823, 35.598563858666161 ], [ -82.547683672696081, 35.597830643009097 ], [ -82.547351372197866, 35.597117855331128 ], [ -82.548653833500367, 35.596505378531297 ], [ -82.55002691017468, 35.595899277084328 ], [ -82.550803679264718, 35.595733395888388 ], [ -82.551460187266542, 35.595611002584462 ], [ -82.55192554474776, 35.595524779862963 ], [ -82.551749280898022, 35.59502666211192 ] ] ] } },
+{ "type": "Feature", "properties": { "id": null }, "geometry": { "type": "MultiLineString", "coordinates": [ ] } },
+{ "type": "Feature", "properties": { "id": null }, "geometry": null },
+{ "type": "Feature", "properties": { "id": null }, "geometry": null },
+{ "type": "Feature", "properties": { "id": null }, "geometry": null },
+{ "type": "Feature", "properties": { "id": null }, "geometry": null },
+{ "type": "Feature", "properties": { "id": null }, "geometry": null },
+{ "type": "Feature", "properties": { "id": null }, "geometry": null },
+{ "type": "Feature", "properties": { "id": null }, "geometry": null },
+{ "type": "Feature", "properties": { "id": null }, "geometry": null },
+{ "type": "Feature", "properties": { "id": null }, "geometry": null },
+{ "type": "Feature", "properties": { "id": null }, "geometry": null }
+]
+}
