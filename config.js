@@ -37,7 +37,18 @@ const config = {
         'The trolley system operated from the late 1880s into the 1930s, and over that half-century it helped reshape Asheville into a busier, more connected mountain city. By my estimates, around 40 miles of track were laid across the network over these years. That’s comparable to some modern mid-sized commuter rail networks. The MARTA network in Atlanta is 48 miles long.',
         'Let’s explore the extent of the trolley system chronologically…'
     ],
-    footer: 'Source: source citations, etc. <br> Created using <a href="https://github.com/mapbox/storytelling" target="_blank">Mapbox Storytelling</a> template.',
+    footer: `
+        <p>The history of Asheville's trolleys is fascinating and has been documented by many historians and foamers, plenty of whom were instrumental in making this project possible. If you have information on more exact routes or locations of Asheville's trolley lines, or if you spot any mistakes in this story, please reach out. You can find my contact information on my <a href="https://whoiskevintho.com/about" target="_blank" rel="noreferrer">website</a>.</p>
+        <p>This project would not have been possible without the definitive source on Asheville's street railways: <em>Trolleys in the Land of the Sky: Street Railways of Asheville, N.C. and Vicinity</em> by David C. Bailey, Joseph M. Canfield, and Harold E. Cox (2000).</p>
+        <p>Numerous online resources were also used during the research and development of this project:</p>
+        <ul>
+            <li>Asheville Junction: A Blog by David E. Whisnant - <a href="https://ashevillejunction.com/" target="_blank" rel="noreferrer">Link</a></li>
+            <li>Preservation Society of Asheville & Buncombe County - <a href="https://psabc.org/" target="_blank" rel="noreferrer">Link</a></li>
+            <li>North Carolina Maps - <a href="https://web.lib.unc.edu/nc-maps/index.php" target="_blank" rel="noreferrer">Link</a></li>
+            <li>The Library of Congress - <a href="https://www.loc.gov/" target="_blank" rel="noreferrer">Link</a></li>
+        </ul>
+        <p>Special thanks to Pack Memorial Library in Asheville for providing access to historical maps and archival materials.</p>
+    `,
     chapters: [
         {
             id: 'chapter-1',
@@ -48,7 +59,7 @@ const config = {
             owner: 'Asheville Street Railway',
             ownerColor: '#c4abab',
             image: './assets/san-fran.jpeg',
-            description: 'This was the first trolley line to start service. It went down South Main St about half a mile, turning onto Southside Avenue and ending up at the Depot, where it could pick up passengers coming into town on the Southern Rail Road.',
+            description: 'This was the first trolley line to start service. It went down South Main St about half a mile, turning onto Southside Avenue and ending up at the Depot, where it could pick up passengers coming into town on the Southern Railroad.',
             location: {
                 center: [-82.55799, 35.58598],
                 zoom: 15,
@@ -762,7 +773,7 @@ const config = {
             ownerColor: '#c4abb1',
             title: 'Relocating the Craggy Line',
             image: './assets/san-fran.jpeg',
-            description: 'Beginning with tearing up the original ‘Howland’ line in 1903 - the line was relocated, extending from Golf Club through the Beaverdam Valley to the French Broad River, the Weaver Dam power plant, and eventually a connection with the Southern Railway at Craggy Station. Excursion trains carried visitors to Lake Tahkeeostee, while the railroad increasingly focused on freight service, hauling stone, coal, and other goods. By the end of the year, the line had evolved from a mountain excursion railway into a freight-oriented route serving industrial sites along the river.',
+            description: 'Howland tore up the Sunset Mountain line in late 1903. The line was relocated, extending from Golf Club through the Beaverdam Valley to the French Broad River, the Weaver Dam power plant, and eventually a connection with the Southern Railway at Craggy Station. Excursion trains carried visitors to Lake Tahkeeostee, while the railroad increasingly focused on freight service, hauling stone, coal, and other goods.',
             location: {
                 center: [-82.58559, 35.63288],
                 zoom: 13.6,
@@ -794,11 +805,11 @@ const config = {
             alignment: 'left',
             hidden: false,
             openedYear: 'Feb 1909',
-            owner: 'Asheville & Craggy Mountain Railway',
-            ownerColor: '#c4abb1',
+            owner: 'Asheville Electric Company',
+            ownerColor: '#706e67',
             title: 'Merrimon Avenue Line',
             image: './assets/san-fran.jpeg',
-            description: 'Merrimon Avenue line built running directly from North Pack square to the old East St line on Merrimon, then extending to Grace, where it would meet with the new Weaverville line. East street line was cut back to Winyah Sanitorium.',
+            description: 'Merrimon Avenue line built running directly from North Pack square to the old East St line on Merrimon, then extending to Grace, where it would meet with the new Weaverville line. The East Street line was cut back to Winyah Sanitorium.',
             location: {
                 center: [-82.55537, 35.61216],
                 zoom: 14.2,
@@ -830,11 +841,11 @@ const config = {
             alignment: 'left',
             hidden: false,
             openedYear: 'Oct 1909',
-            owner: 'Asheville & Tennessee Rail Road',
+            owner: 'Asheville & East Tennessee Railroad Co.',
             ownerColor: '#c4abb1',
             title: 'Weaverville line',
             image: './assets/san-fran.jpeg',
-            description: 'The Asheville–Weaverville electric railway was completed in stages during 1909 under the leadership of R. S. Howland. Construction progressed steadily northward from Grace, with excursion and regular passenger service beginning on newly completed sections even before the line was finished. By August 1909, regular service had reached Weaverville, and on September 4 through cars began operating between downtown Asheville and Weaverville via the Merrimon Avenue streetcar line. The final extension into the center of Weaverville was completed in late October, with a station built near the site of the present Town Hall. The nine-mile electric railway provided Buncombe County\'s first true interurban connection, linking Weaverville directly to Asheville and stimulating development, tourism, and commuter travel. Although promoters envisioned future extensions north to Mars Hill, Burnsville, and the Clinchfield Railroad, the Weaverville line remained the company\'s greatest construction achievement.',
+            description: 'The Asheville to Weaverville electric railway was completed in stages during 1909 under the leadership of Richard S. Howland. Construction progressed steadily northward from Grace, with excursion and regular passenger service beginning on newly completed sections even before the line was finished. By August 1909, regular service had reached Weaverville, and on September 4 through cars began operating between downtown Asheville and Weaverville via the Merrimon Avenue streetcar line. The final extension into the center of Weaverville was completed in late October, with a station built near the site of the present Town Hall.',
             location: {
                 center: [-82.58727, 35.66775],
                 zoom: 13.12,
@@ -865,9 +876,9 @@ const config = {
             id: 'chapter-25',
             alignment: 'left',
             hidden: false,
-            openedYear: 'Feb 1911',
-            owner: 'Asheville & Tennessee Rail Road',
-            ownerColor: '#c4abb1',
+            openedYear: 'May 1911',
+            owner: 'Asheville Electric Company',
+            ownerColor: '#706e67',
             title: 'West Asheville line',
             image: './assets/san-fran.jpeg',
             description: 'After years of proposals and delays, the line was constructed using the new Concrete Bridge (now the West Asheville Bridge) across the French Broad River and extended into West Asheville along what later became Haywood Road. Service began on May 4, 1911, with cars operating through downtown and continuing to Riverside Park. Although the railway held a franchise to extend farther west toward Turnpike and possibly the Asheville School, those extensions were never built. The new line became the last entirely new streetcar route constructed in Asheville.',
@@ -892,6 +903,78 @@ const config = {
             onChapterExit: [
                 {
                     layer: 'westasheville-1911-line',
+                    opacity: 0,
+                    direction: 'up'
+                }
+            ]
+        },
+        {
+            id: 'chapter-26',
+            alignment: 'left',
+            hidden: false,
+            openedYear: '1913',
+            owner: 'Asheville Power & Light Co.',
+            ownerColor: '#706e67',
+            title: 'Extension to Grove Park Inn',
+            image: './assets/san-fran.jpeg',
+            description: 'After E. W. Grove built the Grove Park Inn in 1913, the trolley line along Charlotte Street was extended to serve patrons of the new mountain resort. Although the extension opened after the inn\'s completion, it was technically built by the Asheville Power & Light Co., which had incorporated and acquired the Asheville Electric Co. the previous year. ',
+            location: {
+                center: [-82.54074, 35.61679],
+                zoom: 14.7,
+                pitch: 0,
+                bearing: 0,
+                speed: 0.4,
+            },
+            mapAnimation: 'flyTo',
+            rotateAnimation: false,
+            callback: '',
+            onChapterEnter: [
+                {
+                    layer: 'groveparkextension-line',
+                    opacity: 1,
+                    color: highlightLineColor,
+                    duration: 1000
+                }
+            ],
+            onChapterExit: [
+                {
+                    layer: 'groveparkextension-line',
+                    opacity: 0,
+                    direction: 'up'
+                }
+            ]
+        },
+        {
+            id: 'chapter-27',
+            alignment: 'left',
+            hidden: false,
+            openedYear: '1934',
+            owner: 'Carolina Power & Light Co.',
+            ownerColor: '#706e67',
+            title: 'The rest is history',
+            image: './assets/san-fran.jpeg',
+            description: 'In the years that followed, several improvements were made to Asheville\'s trolley system, including the purchase of new electric streetcars in the 1920s and upgrades to schedules and track infrastructure. No major extensions were built. Instead, the system began to contract. The Weaverville line was abandoned, followed by the Craggy Mountain line and the Sunset Park line.<br><br>The Great Flood of 1916 destroyed Riverside Park and damaged other parts of Asheville. By the 1920s, buses had been introduced, and the growing popularity of the automobile created competition. Then came the Great Depression in 1930, causing ridership to decline dramatically.<br><br>In 1934, Carolina Power & Light replaced Asheville\'s streetcars with buses, bringing the city\'s electric railway era to an end. The final streetcar made its last run to West Asheville on Labor Day in September 1934. During World War II, most of the remaining tracks were removed and scrapped for the war effort.',
+            location: {
+                center: [-82.56564, 35.59302],
+                zoom: 13.12,
+                pitch: 0,
+                bearing: 0,
+                speed: 0.4,
+            },
+            mapAnimation: 'flyTo',
+            rotateAnimation: false,
+            callback: '',
+            onChapterEnter: [
+                {
+                    layer: 'groveparkextension-line',
+                    opacity: 1,
+                    color: highlightLineColor,
+                    duration: 1000
+                }
+            ],
+            onChapterExit: [
+                {
+                    layer: 'groveparkextension-line',
                     opacity: 0,
                     direction: 'up'
                 }

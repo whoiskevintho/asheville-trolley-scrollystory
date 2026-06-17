@@ -479,6 +479,23 @@ function addStoryLayers(map) {
       'line-opacity': 0,
     },
   })
+
+  map.addSource('groveparkextension', {
+    type: 'geojson',
+    data: '/geojson/GroveParkExtension.geojson',
+  })
+
+  map.addLayer({
+    id: 'groveparkextension-line',
+    type: 'line',
+    source: 'groveparkextension',
+    paint: {
+      'line-color': '#ffb000',
+      'line-emissive-strength': 1,
+      'line-width': 3,
+      'line-opacity': 0,
+    },
+  })
 }
 
 function addTerrain(map) {
@@ -772,11 +789,14 @@ export default function App() {
         </section>
 
         {hasFooter && (
-          <footer
-            id="footer"
-            className={storyTheme}
-            dangerouslySetInnerHTML={{ __html: config.footer }}
-          />
+          <footer id="footer" className={storyTheme}>
+            <div className="header-content">
+              <div
+                className="header-intro"
+                dangerouslySetInnerHTML={{ __html: config.footer }}
+              />
+            </div>
+          </footer>
         )}
       </main>
     </>
