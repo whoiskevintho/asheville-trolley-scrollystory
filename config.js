@@ -461,7 +461,7 @@ const config = {
                 zoom: 14.4,
                 pitch: 0,
                 bearing: 0,
-                speed: 0.2,
+                speed: 0.4,
             },
             mapAnimation: 'flyTo',
             rotateAnimation: false,
@@ -472,13 +472,28 @@ const config = {
                     opacity: 1,
                     color: highlightLineColor,
                     duration: 1000
-                }
+                },
+                {
+                    layer: 'montfordline-1891-line',
+                    opacity: 1,
+                    direction: 'up'
+                },
             ],
             onChapterExit: [
                 {
                     layer: 'riversideparkextension-line',
                     opacity: 0,
                     direction: 'up'
+                },
+                {
+                    layer: 'montfordline-1891-line',
+                    opacity: 0,
+                    direction: 'down'
+                },
+                {
+                    layer: 'riversideparkextension-line',
+                    opacity: 0,
+                    direction: 'down'
                 }
             ]
         },
@@ -533,7 +548,7 @@ const config = {
                 zoom: 14.46,
                 pitch: 0,
                 bearing: 0,
-                speed: 0.2,
+                speed: 0.4,
             },
             mapAnimation: 'flyTo',
             rotateAnimation: false,
@@ -544,12 +559,22 @@ const config = {
                     opacity: 1,
                     color: highlightLineColor,
                     duration: 1000
+                },
+                {
+                    layer: 'west-asheville-sulphur-springs-line',
+                    opacity: 0,
+                    direction: 'down'
                 }
             ],
             onChapterExit: [
                 {
                     layer: 'asheville-biltmore-street-railway-line',
                     opacity: 0,
+                    direction: 'up'
+                },
+                {
+                    layer: 'west-asheville-sulphur-springs-line',
+                    opacity: 1,
                     direction: 'up'
                 }
             ]
@@ -616,7 +641,6 @@ const config = {
             ],
             onChapterExit: [
                 {
-
                 }
             ]
         },
@@ -646,12 +670,32 @@ const config = {
                     opacity: 1,
                     color: highlightLineColor,
                     duration: 1000
+                },
+                {
+                    layer: 'asheville-biltmore-street-railway-line',
+                    opacity: 0,
+                    direction: 'down'
+                },
+                {
+                    layer: 'valleystreet-1889-line',
+                    opacity: 0,
+                    direction: 'down'
                 }
             ],
             onChapterExit: [
                 {
                     layer: 'biltmorestreetrailwayrealignment-line',
                     opacity: 0,
+                    direction: 'up'
+                },
+                {
+                    layer: 'asheville-biltmore-street-railway-line',
+                    opacity: 1,
+                    direction: 'up'
+                },
+                {
+                    layer: 'valleystreet-1889-line',
+                    opacity: 1,
                     direction: 'up'
                 }
             ]
@@ -682,12 +726,32 @@ const config = {
                     opacity: 1,
                     color: highlightLineColor,
                     duration: 1000
+                },
+                {
+                    layer: 'craggymountainry-1891-line',
+                    opacity: 0,
+                    direction: 'down'
+                },
+                {
+                    layer: 'craggymountain-quaryextension-line',
+                    opacity: 0,
+                    direction: 'down'
                 }
             ],
             onChapterExit: [
                 {
                     layer: 'howland-line',
                     opacity: 0,
+                    direction: 'up'
+                },
+                {
+                    layer: 'craggymountainry-1891-line',
+                    opacity: 1,
+                    direction: 'up'
+                },
+                {
+                    layer: 'craggymountain-quaryextension-line',
+                    opacity: 1,
                     direction: 'up'
                 }
             ]
@@ -701,7 +765,7 @@ const config = {
             ownerColor: '#706e67',
             title: 'East Street Line Rerouted to Ramoth',
             image: './assets/san-fran.jpeg',
-            description: 'The route to Lookout Park route underwent a major transformation after the Asheville Electric abandoned Lookout Park as an excursion destination. A new route was constructed via Spears Avenue and Merrimon Avenue to the Town Hall in Ramoth, around where Chatham Road crosses Merimon Avenue.<br><br>According to records, the line was rerouted because of declining business to Lookout Park. However, a more troubling explanation may probably played a role. The line served several Black neighborhoods, while Asheville\'s parks remained segregated. A park for Black residents had been established near Lookout Park, leading to increased ridership by Black passengers. As a result, some white riders complained. Ramoth offered the Asheville Electric Company a franchise to extend the line north on the condition that no Black park be established along the route.',
+            description: 'The route to Lookout Park route underwent a major transformation after the Asheville Electric abandoned Lookout Park as an excursion destination. A new route was constructed via Spears Avenue and Merrimon Avenue to the Town Hall in Ramoth, around where Chatham Road crosses Merrimon Avenue.<br><br>According to records, the line was rerouted because of declining business to Lookout Park. However, a more troubling explanation may probably played a role. The line served several Black neighborhoods, while Asheville\'s parks remained segregated. A park for Black residents had been established near Lookout Park, leading to increased ridership by Black passengers. As a result, some white riders complained. Ramoth offered the Asheville Electric Company a franchise to extend the line north on the condition that no Black park be established along the route.',
             location: {
                 center: [-82.55623, 35.60884],
                 zoom: 14.36,
@@ -714,16 +778,37 @@ const config = {
             callback: '',
             onChapterEnter: [
                 {
-                    layer: 'eaststreetline-ramothreroute-line',
+                    layer: 'eaststreetline-ramothreroute-towinyah-line',
                     opacity: 1,
                     color: highlightLineColor,
                     duration: 1000
+                },
+                {
+                    layer: 'eaststreetline-ramothreroute-fromwinyah-line',
+                    opacity: 1,
+                    color: highlightLineColor,
+                    duration: 1000
+                },
+                {
+                    layer: 'EastStreetLine-1890-line',
+                    opacity: 0,
+                    direction: 'down'
                 }
             ],
             onChapterExit: [
                 {
-                    layer: 'eaststreetline-ramothreroute-line',
+                    layer: 'eaststreetline-ramothreroute-towinyah-line',
                     opacity: 0,
+                    direction: 'up'
+                },
+                {
+                    layer: 'eaststreetline-ramothreroute-fromwinyah-line',
+                    opacity: 0,
+                    direction: 'up'
+                },
+                {
+                    layer: 'EastStreetLine-1890-line',
+                    opacity: 1,
                     direction: 'up'
                 }
             ]
@@ -786,16 +871,47 @@ const config = {
             callback: '',
             onChapterEnter: [
                 {
-                    layer: 'newashevillecraggymountain-line',
+                    layer: 'newashevillecraggymountain-fromgrace-line',
                     opacity: 1,
                     color: highlightLineColor,
                     duration: 1000
+                },
+                {
+                    layer: 'newashevillecraggymountain-tograce-line',
+                    opacity: 1,
+                    color: highlightLineColor,
+                    duration: 1000
+                },
+                {
+                    layer: 'locustgapextension-line',
+                    opacity: 0,
+                    direction: 'down'
+                },
+                {
+                    layer: 'howland-line',
+                    opacity: 0,
+                    direction: 'down'
                 }
             ],
             onChapterExit: [
                 {
-                    layer: 'newashevillecraggymountain-line',
+                    layer: 'newashevillecraggymountain-fromgrace-line',
                     opacity: 0,
+                    direction: 'up'
+                },
+                {
+                    layer: 'newashevillecraggymountain-tograce-line',
+                    opacity: 0,
+                    direction: 'up'
+                },
+                {
+                    layer: 'locustgapextension-line',
+                    opacity: 1,
+                    direction: 'up'
+                },
+                {
+                    layer: 'howland-line',
+                    opacity: 1,
                     direction: 'up'
                 }
             ]
@@ -826,12 +942,42 @@ const config = {
                     opacity: 1,
                     color: highlightLineColor,
                     duration: 1000
+                },
+                {
+                    layer: 'batteryparkhotel-line',
+                    opacity: 0,
+                    direction: 'down'
+                },
+                {
+                    layer: 'newashevillecraggymountain-tograce-line',
+                    opacity: 0,
+                    direction: 'down'
+                },
+                {
+                    layer: 'eaststreetline-ramothreroute-fromwinyah-line',
+                    opacity: 0,
+                    direction: 'down'
                 }
             ],
             onChapterExit: [
                 {
                     layer: 'merrimonavenueextension-line',
                     opacity: 0,
+                    direction: 'up'
+                },
+                {
+                    layer: 'batteryparkhotel-line',
+                    opacity: 1,
+                    direction: 'up'
+                },
+                {
+                    layer: 'newashevillecraggymountain-tograce-line',
+                    opacity: 1,
+                    direction: 'up'
+                },
+                {
+                    layer: 'eaststreetline-ramothreroute-fromwinyah-line',
+                    opacity: 1,
                     direction: 'up'
                 }
             ]
@@ -966,16 +1112,25 @@ const config = {
             callback: '',
             onChapterEnter: [
                 {
-                    layer: 'groveparkextension-line',
-                    opacity: 1,
-                    color: highlightLineColor,
-                    duration: 1000
+                    layer: 'newashevillecraggymountain-fromgrace-line',
+                    opacity: 0,
+                    direction: 'down'
+                },
+                {
+                    layer: 'weavervilleline-line',
+                    opacity: 0,
+                    direction: 'down'
                 }
             ],
             onChapterExit: [
                 {
-                    layer: 'groveparkextension-line',
-                    opacity: 0,
+                    layer: 'newashevillecraggymountain-fromgrace-line',
+                    opacity: 1,
+                    direction: 'up'
+                },
+                {
+                    layer: 'weavervilleline-line',
+                    opacity: 1,
                     direction: 'up'
                 }
             ]

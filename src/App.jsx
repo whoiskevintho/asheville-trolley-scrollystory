@@ -377,15 +377,32 @@ function addStoryLayers(map) {
     },
   })
 
-  map.addSource('eaststreetline-ramothreroute', {
+  map.addSource('eaststreetline-ramothreroute-towinyah', {
     type: 'geojson',
-    data: '/geojson/EastStreetLine_RamothReroute.geojson',
+    data: '/geojson/EastStreetLine_RamothReroute_toWinyah.geojson',
   })
 
   map.addLayer({
-    id: 'eaststreetline-ramothreroute-line',
+    id: 'eaststreetline-ramothreroute-towinyah-line',
     type: 'line',
-    source: 'eaststreetline-ramothreroute',
+    source: 'eaststreetline-ramothreroute-towinyah',
+    paint: {
+      'line-color': '#ffb000',
+      'line-emissive-strength': 1,
+      'line-width': 3,
+      'line-opacity': 0,
+    },
+  })
+
+  map.addSource('eaststreetline-ramothreroute-fromwinyah', {
+    type: 'geojson',
+    data: '/geojson/EastStreetLine_RamothReroute_fromWinyah.geojson',
+  })
+
+  map.addLayer({
+    id: 'eaststreetline-ramothreroute-fromwinyah-line',
+    type: 'line',
+    source: 'eaststreetline-ramothreroute-fromwinyah',
     paint: {
       'line-color': '#ffb000',
       'line-emissive-strength': 1,
@@ -411,15 +428,15 @@ function addStoryLayers(map) {
     },
   })
 
-  map.addSource('newashevillecraggymountain', {
+  map.addSource('newashevillecraggymountain-tograce', {
     type: 'geojson',
-    data: '/geojson/NewAshevilleCraggyMountainRY.geojson',
+    data: '/geojson/NewAshevilleCraggyMountainRY_toGrace.geojson',
   })
 
   map.addLayer({
-    id: 'newashevillecraggymountain-line',
+    id: 'newashevillecraggymountain-tograce-line',
     type: 'line',
-    source: 'newashevillecraggymountain',
+    source: 'newashevillecraggymountain-tograce',
     paint: {
       'line-color': '#ffb000',
       'line-emissive-strength': 1,
@@ -427,6 +444,24 @@ function addStoryLayers(map) {
       'line-opacity': 0,
     },
   })
+
+  map.addSource('newashevillecraggymountain-fromgrace', {
+    type: 'geojson',
+    data: '/geojson/NewAshevilleCraggyMountainRY_fromGrace.geojson',
+  })
+
+  map.addLayer({
+    id: 'newashevillecraggymountain-fromgrace-line',
+    type: 'line',
+    source: 'newashevillecraggymountain-fromgrace',
+    paint: {
+      'line-color': '#ffb000',
+      'line-emissive-strength': 1,
+      'line-width': 3,
+      'line-opacity': 0,
+    },
+  })
+
 //Feb 1909
   map.addSource('merrimonavenueextension', {
     type: 'geojson',
