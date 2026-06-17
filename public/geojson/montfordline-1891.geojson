@@ -1,0 +1,18 @@
+{
+"type": "FeatureCollection",
+"name": "montfordline-1891",
+"crs": { "type": "name", "properties": { "name": "urn:ogc:def:crs:OGC:1.3:CRS84" } },
+"features": [
+{ "type": "Feature", "properties": { "id": null }, "geometry": { "type": "MultiLineString", "coordinates": [ ] } },
+{ "type": "Feature", "properties": { "id": null }, "geometry": { "type": "MultiLineString", "coordinates": [ ] } },
+{ "type": "Feature", "properties": { "id": null }, "geometry": { "type": "MultiLineString", "coordinates": [ [ [ -82.554039686357314, 35.594677497104463 ], [ -82.554271360701009, 35.595044526326987 ], [ -82.554746692544143, 35.595749347637025 ], [ -82.554926439879779, 35.596038420020157 ], [ -82.555374063052014, 35.59661702829716 ], [ -82.555852678349922, 35.597044485961497 ], [ -82.556456832086653, 35.59709552553003 ], [ -82.557343447310615, 35.596929646813244 ], [ -82.558096677943396, 35.596636168241403 ], [ -82.558653754765544, 35.596406488608459 ], [ -82.559234370044976, 35.596208708396404 ], [ -82.559814985324408, 35.596904126980156 ], [ -82.560073908354425, 35.597178464759509 ], [ -82.560670215938671, 35.597822835845385 ], [ -82.561282215827774, 35.598518240404765 ], [ -82.561580369619932, 35.598888269725705 ], [ -82.562145292594479, 35.599590044773194 ], [ -82.562797375987842, 35.600431217359741 ], [ -82.561862689842542, 35.600954114699697 ], [ -82.561115739803341, 35.601386070794845 ], [ -82.562054420333851, 35.602477317912928 ], [ -82.562821342299216, 35.603383431443739 ], [ -82.563360584306125, 35.60402322585707 ], [ -82.563776000370694, 35.604471403668271 ], [ -82.564039629796284, 35.604854626182615 ], [ -82.564279292910456, 35.605026750951907 ], [ -82.56535378253902, 35.605513894518502 ], [ -82.565745232292187, 35.60601077790102 ], [ -82.56594295436139, 35.607228616278974 ], [ -82.566182617475576, 35.608612058186495 ], [ -82.566220564135321, 35.608753323795753 ], [ -82.566344390077631, 35.608845876990713 ], [ -82.566530128991118, 35.608871856815668 ], [ -82.566763800527454, 35.608819897157318 ] ] ] } },
+{ "type": "Feature", "properties": { "id": null }, "geometry": { "type": "MultiLineString", "coordinates": [ ] } },
+{ "type": "Feature", "properties": { "id": null }, "geometry": { "type": "MultiLineString", "coordinates": [ ] } },
+{ "type": "Feature", "properties": { "id": null }, "geometry": { "type": "MultiLineString", "coordinates": [ ] } },
+{ "type": "Feature", "properties": { "id": null }, "geometry": { "type": "MultiLineString", "coordinates": [ ] } },
+{ "type": "Feature", "properties": { "id": null }, "geometry": { "type": "MultiLineString", "coordinates": [ ] } },
+{ "type": "Feature", "properties": { "id": null }, "geometry": { "type": "MultiLineString", "coordinates": [ ] } },
+{ "type": "Feature", "properties": { "id": null }, "geometry": { "type": "MultiLineString", "coordinates": [ ] } },
+{ "type": "Feature", "properties": { "id": null }, "geometry": { "type": "MultiLineString", "coordinates": [ ] } }
+]
+}

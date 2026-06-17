@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useRef, useState } from 'react'
+import { Fragment, useEffect, useMemo, useRef, useState } from 'react'
 import mapboxgl from 'mapbox-gl'
 import scrollama from 'scrollama'
 import GlobeMinimap from 'mapbox-gl-globe-minimap'
@@ -14,6 +14,13 @@ const layerTypes = {
   heatmap: ['heatmap-opacity'],
 }
 
+const colorLayerTypes = {
+  fill: ['fill-color'],
+  line: ['line-color'],
+  circle: ['circle-color', 'circle-stroke-color'],
+  symbol: ['icon-color', 'text-color'],
+}
+
 const alignments = {
   left: 'lefty',
   center: 'centered',
@@ -22,24 +29,64 @@ const alignments = {
   fully: 'fully',
 }
 
-function addStoryLayers(map) {
-  // map.addSource('southsideavenue-1889', {
-  //   type: 'vector',
-  //   url: 'mapbox://whoiskevintho.9d983rxjkwml',
-  // })
+const hexToRgb = (color) => {
+  if (!color?.startsWith('#')) {
+    return null
+  }
 
-  // map.addLayer({
-  //   id: 'southsideavenue-1889-line',
-  //   type: 'line',
-  //   source: 'southsideavenue-1889',
-  //   'source-layer': 'b7bd583b55a628a62f48',
-  //   paint: {
-  //     'line-color': '#ffb000',
-  //     'line-emissive-strength': 1,
-  //     'line-width': 3,
-  //     'line-opacity': 0,
-  //   },
-  // })
+  const value = color.slice(1)
+  const expandedValue = value.length === 3
+    ? value.split('').map((char) => char + char).join('')
+    : value
+
+  if (expandedValue.length !== 6) {
+    return null
+  }
+
+  const parsedValue = Number.parseInt(expandedValue, 16)
+
+  if (Number.isNaN(parsedValue)) {
+    return null
+  }
+
+  return {
+    r: (parsedValue >> 16) & 255,
+    g: (parsedValue >> 8) & 255,
+    b: parsedValue & 255,
+  }
+}
+
+const rgbToHex = ({ r, g, b }) => (
+  `#${[r, g, b].map((value) => value.toString(16).padStart(2, '0')).join('')}`
+)
+
+const interpolateColor = (fromColor, toColor, progress) => {
+  const fromRgb = hexToRgb(fromColor)
+  const toRgb = hexToRgb(toColor)
+
+  if (!fromRgb || !toRgb) {
+    return toColor || fromColor
+  }
+
+  const boundedProgress = Math.min(Math.max(progress, 0), 1)
+
+  return rgbToHex({
+    r: Math.round(fromRgb.r + (toRgb.r - fromRgb.r) * boundedProgress),
+    g: Math.round(fromRgb.g + (toRgb.g - fromRgb.g) * boundedProgress),
+    b: Math.round(fromRgb.b + (toRgb.b - fromRgb.b) * boundedProgress),
+  })
+}
+
+const getFadeProgress = (progress, holdProgress = 0) => {
+  const boundedHoldProgress = Math.min(Math.max(holdProgress, 0), 0.99)
+
+  return Math.min(
+    Math.max((progress - boundedHoldProgress) / (1 - boundedHoldProgress), 0),
+    1,
+  )
+}
+
+function addStoryLayers(map) {
 
     map.addSource('southsideavenue-1889', {
       type: 'geojson',
@@ -59,15 +106,14 @@ function addStoryLayers(map) {
   })
 
   map.addSource('pattonavenue-1889', {
-    type: 'vector',
-    url: 'mapbox://whoiskevintho.ndqqw4fexza3',
+    type: 'geojson',
+    data: '/geojson/PattonAvenue-1889.geojson',
   })
 
   map.addLayer({
     id: 'pattonavenue-1889-line',
     type: 'line',
     source: 'pattonavenue-1889',
-    'source-layer': 'd5b424af5ef22f12f437',
     paint: {
       'line-color': '#ffb000',
       'line-emissive-strength': 1,
@@ -77,15 +123,14 @@ function addStoryLayers(map) {
   })
 
   map.addSource('charlottestreet-1889', {
-    type: 'vector',
-    url: 'mapbox://whoiskevintho.34i9oswobn1i',
+    type: 'geojson',
+    data: '/geojson/CharlotteStreet-1889.geojson',
   })
 
   map.addLayer({
     id: 'charlottestreet-1889-line',
     type: 'line',
     source: 'charlottestreet-1889',
-    'source-layer': '42395e24869b98a48aed',
     paint: {
       'line-color': '#ffb000',
       'line-emissive-strength': 1,
@@ -95,15 +140,48 @@ function addStoryLayers(map) {
   })
 
   map.addSource('valleystreet-1889', {
-    type: 'vector',
-    url: 'mapbox://whoiskevintho.hmy7z73h1wy0',
+    type: 'geojson',
+    data: '/geojson/ValleySt-1889.geojson',
   })
 
   map.addLayer({
     id: 'valleystreet-1889-line',
     type: 'line',
     source: 'valleystreet-1889',
-    'source-layer': 'c9ee43b1d1931dd1176d',
+    paint: {
+      'line-color': '#ffb000',
+      'line-emissive-strength': 1,
+      'line-width': 3,
+      'line-opacity': 0,
+    },
+  })
+
+  map.addSource('batteryparkhotel', {
+    type: 'geojson',
+    data: '/geojson/BatteryParkHotel.geojson',
+  })
+
+  map.addLayer({
+    id: 'batteryparkhotel-line',
+    type: 'line',
+    source: 'batteryparkhotel',
+    paint: {
+      'line-color': '#ffb000',
+      'line-emissive-strength': 1,
+      'line-width': 3,
+      'line-opacity': 0,
+    },
+  })
+
+  map.addSource('craggymountainry-1891', {
+    type: 'geojson',
+    data: '/geojson/CraggyMountainRY-1891.geojson',
+  })
+
+  map.addLayer({
+    id: 'craggymountainry-1891-line',
+    type: 'line',
+    source: 'craggymountainry-1891',
     paint: {
       'line-color': '#ffb000',
       'line-emissive-strength': 1,
@@ -113,15 +191,14 @@ function addStoryLayers(map) {
   })
 
   map.addSource('EastStreetLine-1890', {
-    type: 'vector',
-    url: 'mapbox://whoiskevintho.nsvsz76w3tgs',
+    type: 'geojson',
+    data: '/geojson/EastStreetLine-1890.geojson',
   })
 
   map.addLayer({
     id: 'EastStreetLine-1890-line',
     type: 'line',
     source: 'EastStreetLine-1890',
-    'source-layer': 'bd9f6c9a632d53e4a59f',
     paint: {
       'line-color': '#ffb000',
       'line-emissive-strength': 1,
@@ -131,15 +208,14 @@ function addStoryLayers(map) {
   })
 
   map.addSource('montfordline-1891', {
-    type: 'vector',
-    url: 'mapbox://whoiskevintho.dop4caifk207',
+    type: 'geojson',
+    data: '/geojson/montfordline-1891.geojson',
   })
 
   map.addLayer({
     id: 'montfordline-1891-line',
     type: 'line',
     source: 'montfordline-1891',
-    'source-layer': '34446b8ec6cbbcbdfdaf',
     paint: {
       'line-color': '#ffb000',
       'line-emissive-strength': 1,
@@ -149,15 +225,14 @@ function addStoryLayers(map) {
   })
 
   map.addSource('west-asheville-sulphur-springs', {
-    type: 'vector',
-    url: 'mapbox://whoiskevintho.327cyfexvofu',
+    type: 'geojson',
+    data: '/geojson/WestAshevilleSulphurSprings.geojson',
   })
 
   map.addLayer({
     id: 'west-asheville-sulphur-springs-line',
     type: 'line',
     source: 'west-asheville-sulphur-springs',
-    'source-layer': '66761dc51f25c9b0bceb',
     paint: {
       'line-color': '#ffb000',
       'line-emissive-strength': 1,
@@ -167,15 +242,31 @@ function addStoryLayers(map) {
   })
 
   map.addSource('frenchbroadavenue-1892', {
-    type: 'vector',
-    url: 'mapbox://whoiskevintho.v23dweld57od',
+    type: 'geojson',
+    data: '/geojson/FrenchBroadAve-1892.geojson',
   })
 
   map.addLayer({
     id: 'frenchbroadavenue-1892-line',
     type: 'line',
     source: 'frenchbroadavenue-1892',
-    'source-layer': '1f1119474448a087b968',
+    paint: {
+      'line-color': '#ffb000',
+      'line-emissive-strength': 1,
+      'line-width': 3,
+      'line-opacity': 0,
+    },
+  })
+
+  map.addSource('craggymountain-quaryextension', {
+    type: 'geojson',
+    data: '/geojson/CraggyMountainRY_QuaryExtension.geojson',
+  })
+
+  map.addLayer({
+    id: 'craggymountain-quaryextension-line',
+    type: 'line',
+    source: 'craggymountain-quaryextension',
     paint: {
       'line-color': '#ffb000',
       'line-emissive-strength': 1,
@@ -185,15 +276,14 @@ function addStoryLayers(map) {
   })
 
   map.addSource('riversideparkextension', {
-    type: 'vector',
-    url: 'mapbox://whoiskevintho.pt63mp230t50',
+    type: 'geojson',
+    data: '/geojson/RiversideParkExtension.geojson',
   })
 
   map.addLayer({
     id: 'riversideparkextension-line',
     type: 'line',
     source: 'riversideparkextension',
-    'source-layer': '1cf061a4263c4b92446a',
     paint: {
       'line-color': '#ffb000',
       'line-emissive-strength': 1,
@@ -203,15 +293,14 @@ function addStoryLayers(map) {
   })
 
   map.addSource('montfordavenuerealignment', {
-    type: 'vector',
-    url: 'mapbox://whoiskevintho.omnzlw6s30ih',
+    type: 'geojson',
+    data: '/geojson/MontfordAvenueRealignment.geojson',
   })
 
   map.addLayer({
     id: 'montfordavenuerealignment-line',
     type: 'line',
     source: 'montfordavenuerealignment',
-    'source-layer': '036df6e4bcef2ac553ce',
     paint: {
       'line-color': '#ffb000',
       'line-emissive-strength': 1,
@@ -221,15 +310,14 @@ function addStoryLayers(map) {
   })
 
   map.addSource('asheville-biltmore-street-railway', {
-    type: 'vector',
-    url: 'mapbox://whoiskevintho.s48e597erty2',
+    type: 'geojson',
+    data: '/geojson/AshevilleBiltmoreStreetRailway.geojson',
   })
 
   map.addLayer({
     id: 'asheville-biltmore-street-railway-line',
     type: 'line',
     source: 'asheville-biltmore-street-railway',
-    'source-layer': '6b9b8b21086b61fbdc89',
     paint: {
       'line-color': '#ffb000',
       'line-emissive-strength': 1,
@@ -239,15 +327,151 @@ function addStoryLayers(map) {
   })
 
   map.addSource('charlotte-street-extension-1899', {
-    type: 'vector',
-    url: 'mapbox://whoiskevintho.lq34g3y3tmni',
+    type: 'geojson',
+    data: '/geojson/CharlotteStreetExtensionGolfClub.geojson',
   })
 
   map.addLayer({
     id: 'charlotte-street-extension-1899-line',
     type: 'line',
     source: 'charlotte-street-extension-1899',
-    'source-layer': 'fc2d22599bfe2e5eb57d',
+    paint: {
+      'line-color': '#ffb000',
+      'line-emissive-strength': 1,
+      'line-width': 3,
+      'line-opacity': 0,
+    },
+  })
+
+  map.addSource('biltmorestreetrailwayrealignment', {
+    type: 'geojson',
+    data: '/geojson/BiltmoreStreetRailwayRealignment.geojson',
+  })
+
+  map.addLayer({
+    id: 'biltmorestreetrailwayrealignment-line',
+    type: 'line',
+    source: 'biltmorestreetrailwayrealignment',
+    paint: {
+      'line-color': '#ffb000',
+      'line-emissive-strength': 1,
+      'line-width': 3,
+      'line-opacity': 0,
+    },
+  })
+
+  map.addSource('howland', {
+    type: 'geojson',
+    data: '/geojson/HowlandLine.geojson',
+  })
+
+  map.addLayer({
+    id: 'howland-line',
+    type: 'line',
+    source: 'howland',
+    paint: {
+      'line-color': '#ffb000',
+      'line-emissive-strength': 1,
+      'line-width': 3,
+      'line-opacity': 0,
+    },
+  })
+
+  map.addSource('eaststreetline-ramothreroute', {
+    type: 'geojson',
+    data: '/geojson/EastStreetLine_RamothReroute.geojson',
+  })
+
+  map.addLayer({
+    id: 'eaststreetline-ramothreroute-line',
+    type: 'line',
+    source: 'eaststreetline-ramothreroute',
+    paint: {
+      'line-color': '#ffb000',
+      'line-emissive-strength': 1,
+      'line-width': 3,
+      'line-opacity': 0,
+    },
+  })
+
+  map.addSource('locustgapextension', {
+    type: 'geojson',
+    data: '/geojson/LocustGapExtension.geojson',
+  })
+
+  map.addLayer({
+    id: 'locustgapextension-line',
+    type: 'line',
+    source: 'locustgapextension',
+    paint: {
+      'line-color': '#ffb000',
+      'line-emissive-strength': 1,
+      'line-width': 3,
+      'line-opacity': 0,
+    },
+  })
+
+  map.addSource('newashevillecraggymountain', {
+    type: 'geojson',
+    data: '/geojson/NewAshevilleCraggyMountainRY.geojson',
+  })
+
+  map.addLayer({
+    id: 'newashevillecraggymountain-line',
+    type: 'line',
+    source: 'newashevillecraggymountain',
+    paint: {
+      'line-color': '#ffb000',
+      'line-emissive-strength': 1,
+      'line-width': 3,
+      'line-opacity': 0,
+    },
+  })
+//Feb 1909
+  map.addSource('merrimonavenueextension', {
+    type: 'geojson',
+    data: '/geojson/MerrimonAvenueExtension.geojson',
+  })
+
+  map.addLayer({
+    id: 'merrimonavenueextension-line',
+    type: 'line',
+    source: 'merrimonavenueextension',
+    paint: {
+      'line-color': '#ffb000',
+      'line-emissive-strength': 1,
+      'line-width': 3,
+      'line-opacity': 0,
+    },
+  })
+
+  //Oct 1909
+  map.addSource('weavervilleline', {
+    type: 'geojson',
+    data: '/geojson/WeavervilleLine.geojson',
+  })
+
+  map.addLayer({
+    id: 'weavervilleline-line',
+    type: 'line',
+    source: 'weavervilleline',
+    paint: {
+      'line-color': '#ffb000',
+      'line-emissive-strength': 1,
+      'line-width': 3,
+      'line-opacity': 0,
+    },
+  })
+// May 1911
+  map.addSource('westasheville-1911', {
+    type: 'geojson',
+    data: '/geojson/WestAsheville-1911.geojson',
+  })
+
+  map.addLayer({
+    id: 'westasheville-1911-line',
+    type: 'line',
+    source: 'westasheville-1911',
     paint: {
       'line-color': '#ffb000',
       'line-emissive-strength': 1,
@@ -334,18 +558,60 @@ export default function App() {
       return mapLayer ? layerTypes[mapLayer.type] : []
     }
 
-    const setLayerOpacity = (layer) => {
+    const getLayerColorPaintType = (layer) => {
+      const mapLayer = map.getLayer(layer)
+      return mapLayer ? colorLayerTypes[mapLayer.type] : []
+    }
+
+    const setLayerPaint = (layer) => {
       getLayerPaintType(layer.layer).forEach((prop) => {
         const options = {}
 
-        if (layer.duration) {
+        if (layer.duration && layer.opacity !== undefined) {
           map.setPaintProperty(layer.layer, `${prop}-transition`, {
             duration: layer.duration,
           })
         }
 
-        map.setPaintProperty(layer.layer, prop, layer.opacity, options)
+        if (layer.opacity !== undefined) {
+          map.setPaintProperty(layer.layer, prop, layer.opacity, options)
+        }
       })
+
+      getLayerColorPaintType(layer.layer).forEach((prop) => {
+        if (layer.duration && layer.color) {
+          map.setPaintProperty(layer.layer, `${prop}-transition`, {
+            duration: layer.duration,
+          })
+        }
+
+        if (layer.color) {
+          map.setPaintProperty(layer.layer, prop, layer.color)
+        }
+      })
+    }
+
+    const runLayerActions = (actions, direction) => {
+      actions
+        ?.filter((action) => !action.direction || action.direction === direction)
+        .forEach(setLayerPaint)
+    }
+
+    const runLayerProgressActions = (actions, progress) => {
+      const fadeProgress = getFadeProgress(progress, config.highlightHoldProgress)
+
+      actions
+        ?.filter((action) => action.color)
+        .forEach((action) => {
+          setLayerPaint({
+            layer: action.layer,
+            color: interpolateColor(
+              action.color,
+              action.fadeToColor || config.lineColor,
+              fadeProgress,
+            ),
+          })
+        })
     }
 
     const scroller = scrollama()
@@ -380,7 +646,7 @@ export default function App() {
             marker.setLngLat(chapter.location.center)
           }
 
-          chapter.onChapterEnter?.forEach(setLayerOpacity)
+          runLayerActions(chapter.onChapterEnter, response.direction)
 
           if (chapter.callback && window[chapter.callback]) {
             window[chapter.callback]()
@@ -408,7 +674,12 @@ export default function App() {
           const chapter = config.chapters.find((item) => item.id === response.element.id)
 
           response.element.classList.remove('active')
-          chapter?.onChapterExit?.forEach(setLayerOpacity)
+          runLayerActions(chapter?.onChapterExit, response.direction)
+        })
+        .onStepProgress((response) => {
+          const chapter = config.chapters.find((item) => item.id === response.element.id)
+
+          runLayerProgressActions(chapter?.onChapterEnter, response.progress)
         })
 
       if (config.auto) {
@@ -451,8 +722,11 @@ export default function App() {
               )}
               {config.intro?.length > 0 && (
                 <div className="header-intro">
-                  {config.intro.map((paragraph) => (
-                    <p key={paragraph}>{paragraph}</p>
+                  {config.intro.map((paragraph, index) => (
+                    <Fragment key={paragraph}>
+                      <p>{paragraph}</p>
+                      {index < config.intro.length - 1 && <br />}
+                    </Fragment>
                   ))}
                 </div>
               )}

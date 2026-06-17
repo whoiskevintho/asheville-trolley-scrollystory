@@ -1,0 +1,18 @@
+{
+"type": "FeatureCollection",
+"name": "PattonAvenue-1889",
+"crs": { "type": "name", "properties": { "name": "urn:ogc:def:crs:OGC:1.3:CRS84" } },
+"features": [
+{ "type": "Feature", "properties": { "id": null }, "geometry": { "type": "MultiLineString", "coordinates": [ [ [ -82.551749364114286, 35.595026289940698 ], [ -82.552596525093733, 35.594846563662934 ], [ -82.55352237107985, 35.594667920011283 ], [ -82.553993140225316, 35.594597738467613 ], [ -82.555044524650242, 35.594387193467448 ], [ -82.556292062885746, 35.594125606483665 ], [ -82.558716523984984, 35.593640711277182 ], [ -82.560089600659296, 35.593359981130909 ], [ -82.562835754007921, 35.592824039026901 ], [ -82.56338498467764, 35.592249811362286 ], [ -82.563714523079469, 35.591949935278016 ], [ -82.564302984511329, 35.591496928850319 ], [ -82.564663907522842, 35.591190669531365 ], [ -82.564969907467415, 35.590986496001186 ], [ -82.565260215107102, 35.590782321950257 ], [ -82.56551129198472, 35.590661093361163 ], [ -82.565997753435042, 35.59068023472954 ], [ -82.566366522598997, 35.590712137 ] ] ] } },
+{ "type": "Feature", "properties": { "id": null }, "geometry": { "type": "MultiLineString", "coordinates": [ ] } },
+{ "type": "Feature", "properties": { "id": null }, "geometry": null },
+{ "type": "Feature", "properties": { "id": null }, "geometry": null },
+{ "type": "Feature", "properties": { "id": null }, "geometry": null },
+{ "type": "Feature", "properties": { "id": null }, "geometry": null },
+{ "type": "Feature", "properties": { "id": null }, "geometry": null },
+{ "type": "Feature", "properties": { "id": null }, "geometry": null },
+{ "type": "Feature", "properties": { "id": null }, "geometry": null },
+{ "type": "Feature", "properties": { "id": null }, "geometry": null },
+{ "type": "Feature", "properties": { "id": null }, "geometry": null }
+]
+}

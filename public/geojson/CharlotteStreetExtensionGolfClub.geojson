@@ -1,0 +1,18 @@
+{
+"type": "FeatureCollection",
+"name": "CharlotteStreetExtensionGolfClub",
+"crs": { "type": "name", "properties": { "name": "urn:ogc:def:crs:OGC:1.3:CRS84" } },
+"features": [
+{ "type": "Feature", "properties": { "id": null }, "geometry": { "type": "MultiLineString", "coordinates": [ [ [ -82.54294000728045, 35.612574421719899 ], [ -82.543122296040963, 35.612256026355212 ], [ -82.543294911394312, 35.612032770306328 ], [ -82.54362444979617, 35.611809513634341 ], [ -82.54404029587468, 35.61172658956891 ], [ -82.544581680391971, 35.61172658956891 ], [ -82.545044603385008, 35.611637286633083 ], [ -82.545366295634423, 35.611414028857347 ], [ -82.545750757103235, 35.611203528098116 ], [ -82.545844910932317, 35.610705978647111 ], [ -82.545923372456585, 35.610259457274331 ], [ -82.545978295523554, 35.609959648668401 ], [ -82.546009680133253, 35.609583291593871 ], [ -82.546064603200236, 35.609015563165556 ], [ -82.546080295505078, 35.608715749898053 ], [ -82.546127372419633, 35.608320249826576 ], [ -82.546182295486588, 35.607886473306522 ], [ -82.546229372401129, 35.607331491094158 ], [ -82.546252910858428, 35.607108221302141 ], [ -82.546315680077811, 35.606591508822603 ], [ -82.546386295449622, 35.606042896858682 ], [ -82.546611872331468, 35.60445764231261 ], [ -82.546682487703308, 35.60373039229377 ], [ -82.546752304967356, 35.60297747104056 ] ] ] } },
+{ "type": "Feature", "properties": { "id": null }, "geometry": { "type": "MultiLineString", "coordinates": [ ] } },
+{ "type": "Feature", "properties": { "id": null }, "geometry": { "type": "MultiLineString", "coordinates": [ ] } },
+{ "type": "Feature", "properties": { "id": null }, "geometry": { "type": "MultiLineString", "coordinates": [ ] } },
+{ "type": "Feature", "properties": { "id": null }, "geometry": { "type": "MultiLineString", "coordinates": [ ] } },
+{ "type": "Feature", "properties": { "id": null }, "geometry": { "type": "MultiLineString", "coordinates": [ ] } },
+{ "type": "Feature", "properties": { "id": null }, "geometry": { "type": "MultiLineString", "coordinates": [ ] } },
+{ "type": "Feature", "properties": { "id": null }, "geometry": { "type": "MultiLineString", "coordinates": [ ] } },
+{ "type": "Feature", "properties": { "id": null }, "geometry": { "type": "MultiLineString", "coordinates": [ ] } },
+{ "type": "Feature", "properties": { "id": null }, "geometry": { "type": "MultiLineString", "coordinates": [ ] } },
+{ "type": "Feature", "properties": { "id": null }, "geometry": { "type": "MultiLineString", "coordinates": [ ] } }
+]
+}

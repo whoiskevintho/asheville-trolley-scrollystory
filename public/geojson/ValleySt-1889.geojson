@@ -1,0 +1,19 @@
+{
+"type": "FeatureCollection",
+"name": "ValleySt-1889",
+"crs": { "type": "name", "properties": { "name": "urn:ogc:def:crs:OGC:1.3:CRS84" } },
+"features": [
+{ "type": "Feature", "properties": { "id": null }, "geometry": null },
+{ "type": "Feature", "properties": { "id": null }, "geometry": { "type": "MultiLineString", "coordinates": [ ] } },
+{ "type": "Feature", "properties": { "id": null }, "geometry": null },
+{ "type": "Feature", "properties": { "id": null }, "geometry": null },
+{ "type": "Feature", "properties": { "id": null }, "geometry": null },
+{ "type": "Feature", "properties": { "id": null }, "geometry": null },
+{ "type": "Feature", "properties": { "id": null }, "geometry": null },
+{ "type": "Feature", "properties": { "id": null }, "geometry": null },
+{ "type": "Feature", "properties": { "id": null }, "geometry": null },
+{ "type": "Feature", "properties": { "id": null }, "geometry": null },
+{ "type": "Feature", "properties": { "id": null }, "geometry": null },
+{ "type": "Feature", "properties": { "id": null }, "geometry": { "type": "MultiLineString", "coordinates": [ [ [ -82.55172171413713, 35.588402529420172 ], [ -82.551738471826567, 35.587681249681943 ], [ -82.551749799650139, 35.58722795317972 ], [ -82.551184251036659, 35.587388898855771 ], [ -82.550842731198543, 35.587934619534487 ], [ -82.550579101849834, 35.588480336493632 ], [ -82.550159691522296, 35.589318394581461 ], [ -82.54970433173817, 35.590210039775542 ], [ -82.549136578479732, 35.591431001635407 ] ] ] } }
+]
+}
